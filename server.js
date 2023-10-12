@@ -10,7 +10,7 @@ const server = http.createServer((req, res) => {
     // Обработка запросов
     if (url.searchParams.has('hello')) {
         // Если передан параметр hello
-        const name = url.searchParams.get('hello');
+        const name = decodeURIComponent(url.searchParams.get('hello'));
         if (name === '') {
             // Если параметр hello указан, но не передано имя
             res.writeHead(400, { 'Content-Type': 'text/plain' });
